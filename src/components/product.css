@@ -1,0 +1,17 @@
+.product {
+  color: #473335;
+  background: #ffffff;
+  margin: 1rem;
+  border-radius: 1rem;
+  max-width: 300px;
+}
+
+.product img {
+  width: 100%;
+  border-radius: 1rem 1rem 0 0;
+
+}
+
+.product .product-body {
+  padding: 1rem;
+}

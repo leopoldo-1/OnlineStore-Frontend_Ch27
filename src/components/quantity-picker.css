@@ -1,0 +1,23 @@
+.quantity-picker {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+
+.quantity-picker div {
+  display: flex;
+  align-items: center;
+}
+.quantity-picker button {
+  background: rgb(213, 173, 138);
+  /* padding: .2rem; */
+  color: #5e311e;
+  font-weight: bold;
+  margin: 5px 10px;
+  font-weight: 300px;
+  font-size: 16px;
+  border: none;
+  border-radius: 1rem;
+  padding: .1rem .5rem;
+}

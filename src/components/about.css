@@ -1,0 +1,14 @@
+
+
+.about .title,
+h5{
+  color: #5e311e;
+}
+
+.about .btn-see-name {
+  background: #5e311e;
+  color: #ebe7de;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+}

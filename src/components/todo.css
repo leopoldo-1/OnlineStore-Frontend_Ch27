@@ -1,0 +1,26 @@
+.title {
+  color: #5e311e;
+}
+
+.todo-container {
+  background: #ebe7de;
+  padding: 3rem;
+}
+
+.form-container {
+  width: 400px;
+  border: solid 1px grey;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+}
+
+.btn-add-task {
+  background: #5e311e;
+  color: #ebe7de;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  margin-left: 1rem;
+}

@@ -1,0 +1,13 @@
+nav {
+  background: #5e311e;
+  color: white
+}
+
+.nav-bar {
+  /* border: 1px solid #473335; */
+}
+
+.nav-bar h1 {
+  text-align: center;
+  color: #473335;
+}

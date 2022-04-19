@@ -1,0 +1,18 @@
+.todo-item-container {
+  border-radius: 10px;
+  color: #5e311e;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-item-container .item {
+  padding: 1.5rem;
+  flex: 2;
+  text-align: ed;
+}
+
+.todo-item-container div:not(.item) {
+  flex: 1;
+}
+

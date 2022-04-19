@@ -1,0 +1,17 @@
+.catalog {
+  background: #ebe7de;
+}
+
+.catalog h5 {
+  padding-top: 1rem;
+  text-decoration: underline;
+}
+
+.catalog .product {
+  display: inline-block;
+}
+
+/* .catalog-list {
+  display: flex;
+  justify-content: center;
+} */
