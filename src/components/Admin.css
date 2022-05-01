@@ -1,0 +1,31 @@
+.section-container {
+  display: grid;
+  grid-template-columns: 5fr 3fr;
+  background: #ebe7de;
+}
+
+.sec-products {
+  grid-column: 1 / 2;
+  /* background: #ebe7de; */
+  border-right: 2px solid #5e311e;
+}
+
+.sec-coupons {
+  grid-column: 2 / 3;
+}
+
+.my-control {
+  margin-bottom: .5rem;
+}
+
+.form div label{
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  margin-right: .5rem;
+}
+
+.my-control input {
+  border-radius: .5rem;
+  border: none;
+}

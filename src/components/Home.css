@@ -1,0 +1,21 @@
+.home {
+  color: grey;
+}
+
+.home-page-container {
+  max-width: 1200px;
+  /* width: 100%; */
+  margin: 0 auto;
+  position: relative;
+}
+
+.home-page-image {
+  width: 100%;
+}
+
+.text-container {
+  position: absolute;
+  /* left: 50px;
+  right: 50px;
+  z-index: 1; */
+}

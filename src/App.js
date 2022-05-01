@@ -1,26 +1,35 @@
 // import logo from './logo.svg';
-import NavBar from './components/navBar'
-import Footer from './components/footer'
-import Catalog from './components/catalog'
 import About from './components/about'
+import Admin from './components/Admin'
+import Catalog from './components/catalog'
+import Footer from './components/footer'
+import Home from './components/Home'
+import NavBar from './components/navBar'
 import Todo from './components/todo'
+// import Parent from './components/Parent'
 import './App.css';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
+import {BrowserRouter, Routes, Route } from 'react-router-dom'
+
 function App() {
   return (
     <div className="App">
-      <NavBar></NavBar>
+      <BrowserRouter>
+        <NavBar></NavBar>
 
-      <Catalog></Catalog>
+        <Routes>
+          <Route path="/about" element={<About/>} />
+          <Route path="/admin" element={<Admin/>} />
+          <Route path="/catalog" element={<Catalog/>} />
+          <Route path="/home" element={<Home/>} />
+          <Route path="/shopingList" element={<Todo/>} />
+        </Routes>
 
-      <About></About>
-
-      <Todo></Todo>
-
-      <Footer></Footer>
+        <Footer></Footer>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,24 @@
+body {
+}
+
+.container {
+  color: white;
+  display: flex;
+  height: 100vh;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+
+}
+
+.title {
+  background: linear-gradient(to right, #48ff00 0%, #33aa04 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  margin: 2rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
