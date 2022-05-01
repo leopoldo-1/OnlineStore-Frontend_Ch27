@@ -29,3 +29,9 @@
   border-radius: .5rem;
   border: none;
 }
+
+/* Alert */
+.admin-page .alert {
+  margin: 1rem 3.5rem;
+
+}

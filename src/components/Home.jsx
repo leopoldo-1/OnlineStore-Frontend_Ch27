@@ -16,7 +16,7 @@ const Home = () => {
       </div>
 
       <div>
-        <Link className="btn btn-lg btn-primary" to="/catalog">Check out amazing catalog!</Link>
+        <Link className="btn btn-lg btn-primary" to="/catalog">Check out amazing catalog!!</Link>
       </div>
 
     </div>

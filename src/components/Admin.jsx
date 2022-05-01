@@ -4,6 +4,8 @@ import './Admin.css'
 const Admin = () => {
   const [product, setProduct] = useState({})
   const [coupon, setCoupon] = useState({})
+  const [errorVisible, setErrorVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleTextChange = (e) => {
     console.log('ev1 ',e.target.name, e.target.value);
@@ -12,20 +14,25 @@ const Admin = () => {
     setProduct(copy)
   }
 
+  const showError = (text) => {
+    setErrorMessage(text);
+    setErrorVisible(true)
+  }
+
   const handleSaveProduct = () => {
     // Validations
-    if(product.title.length < 5) {
-      alert("Error, title must be at least 5 chars")
+    if(!product.title || product.title.length < 5) {
+      showError("Error, title must be at least 5 chars")
       return
     }
 
     if(!product.image) {
-      alert("Error, Image can not be empty")
+      showError("Error, Image can not be empty")
       return
     }
 
     if(!product.category) {
-      alert("Error, category can not be empy")
+      showError("Error, category can not be empty")
       return
     }
 
@@ -34,7 +41,7 @@ const Admin = () => {
     savedProduct.price = parseFloat(product.price)
 
     if(!product.price || product.price < 1) {
-      alert("Error, the value must be greather than 1")
+      showError("Error, the value must be greather than 1")
       return
     }
 
@@ -44,15 +51,7 @@ const Admin = () => {
     //   return
     // }
 
-    console.log("Saved price");
-
-    // title > 5 characters
-    // image exist (can not be empty)
-    // category exist (can not be empty)
-    // price > 1
-
-
-    console.log('product...',product);
+    setErrorVisible(false);
     // send product to Server
   }
 // ------------------------------------------
@@ -86,6 +85,8 @@ const Admin = () => {
 // -------------------------------------------
   return (
     <div className='admin-page'>
+
+      {errorVisible ? <div className="alert alert-danger">{errorMessage}</div> : null}
 
       <div className="section-container">
         <section className='sec-products'>
