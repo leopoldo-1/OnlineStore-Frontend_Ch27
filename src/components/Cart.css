@@ -1,0 +1,15 @@
+.cart-container {
+  width: 90%;
+  height: calc(100vh - 120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: #473335;
+}
+
+h1 span {
+  text-decoration: underline;
+}

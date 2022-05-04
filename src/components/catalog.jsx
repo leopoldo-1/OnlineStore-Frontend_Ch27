@@ -1,5 +1,5 @@
 import Product from "./product"
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import "./catalog.css"
 import DataService from '../services/dataService'
 import {button} from 'bootstrap'

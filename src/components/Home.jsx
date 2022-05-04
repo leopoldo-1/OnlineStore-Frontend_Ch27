@@ -1,10 +1,16 @@
 import React from 'react'
 import './Home.css'
 import {Link} from 'react-router-dom'
+import { useContext } from "react"
+import store from "../context/storeContext"
 
 const Home = () => {
+  const user = useContext(store).user
+
+
   return (
     <div className='home'>
+      <h6>Welcome back {user.email}</h6>
 
       <div className='home-page-container'>
         <img className='home-page-image' src="/images/home-page-coffee.jpg" alt="americano" />
