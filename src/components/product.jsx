@@ -17,7 +17,8 @@ const Product = (props) => {
 
   const handleAdd = () => {
     // console.log("Adding... ",props.info.title); //print prouduct-title description
-    addProdToCard()
+    let prod = {...props.info, quantity: quantity};
+    addProdToCard(prod)
   }
 
   return(
