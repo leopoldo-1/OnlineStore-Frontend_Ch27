@@ -30,7 +30,7 @@ const Product = (props) => {
         <h4>{props.info.title}</h4>
 
         <label htmlFor="">Total: {props.info.price * quantity.toFixed(2)}</label> <br></br>
-        <label htmlFor="">Price: {props.info.price.toFixed(2)}</label>
+        <label htmlFor="">Price: {(+props.info.price).toFixed(2)}</label>
 
         <QuantityPicker onChange={handleQuantityChange}></QuantityPicker>
 

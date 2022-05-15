@@ -3,15 +3,23 @@ import { useState, useEffect } from 'react'
 import "./catalog.css"
 import DataService from '../services/dataService'
 import {button} from 'bootstrap'
+import Loading from './Loading'
 
 const Catalog = () => {
   const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false)
 
-  const loadCatalog = () => {
+
+  const loadCatalog = async() => {
+    setLoading(true)
+
     const service = new DataService();
-    let prods = service.getCatalog();
+    let prods = await service.getCatalog();
     setProducts(prods)
     console.log('prods.. ',products);
+
+    setLoading(false)
+
   }
 
   useEffect( () => {
@@ -21,6 +29,8 @@ const Catalog = () => {
 
   return (
     <div className="catalog">
+      {loading ? <Loading/> : ''}
+
       <h5>We have {products.length} ready!</h5>
 
       {products.map((prod) => (

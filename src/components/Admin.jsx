@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import DataService from '../services/dataService'
+import Loading from './Loading'
+
 import './Admin.css'
 
 const Admin = () => {
@@ -6,6 +9,38 @@ const Admin = () => {
   const [coupon, setCoupon] = useState({})
   const [errorVisible, setErrorVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("")
+  const [allCoupons, setAllCoupons] = useState([])
+  const [allProducts, setAllProducts] = useState([])
+
+  const [loading, setLoading] = useState(false)
+
+  //  put the data on an state var
+  //use the data in return
+  //and map every coupon into an li
+  const retrieveCoupons = async() => {
+    setLoading(true)
+    const service = new DataService();
+    let coupons = await service.getCoupons();
+
+    setAllCoupons(coupons)
+    setLoading(false)
+  }
+
+  const retrieveProducts = async() => {
+    setLoading(true)
+
+    const service = new DataService();
+    let products = await service.getProducts()
+
+    setAllProducts(products)
+    setLoading(false)
+  }
+
+  useEffect(() => {
+    retrieveCoupons()
+    retrieveProducts()
+  }, [])
+
 
   const handleTextChange = (e) => {
     console.log('ev1 ',e.target.name, e.target.value);
@@ -19,7 +54,8 @@ const Admin = () => {
     setErrorVisible(true)
   }
 
-  const handleSaveProduct = () => {
+
+  const handleSaveProduct = async () => {
     // Validations
     if(!product.title || product.title.length < 5) {
       showError("Error, title must be at least 5 chars")
@@ -53,9 +89,19 @@ const Admin = () => {
 
     setErrorVisible(false);
     // send product to Server
+    let service = new DataService();
+    let res = await service.saveProduct(savedProduct);
+    console.log(res);
+
+    let copy = [...allProducts]
+    copy.push(savedProduct);
+    setAllProducts(copy)
+
+    console.log('savedProduct',savedProduct);
   }
 // ------------------------------------------
   const handleCouponChange = (e) => {
+    setLoading(true)
     console.log('evt2 ',e.target.name, e.target.value);
 
     let copyCoupon = {...coupon}
@@ -63,7 +109,8 @@ const Admin = () => {
     setCoupon(copyCoupon)
   }
 
-  const handleSaveCoupon = () => {
+  const handleSaveCoupon = async () => {
+    setLoading(true)
     let savedCoupon = {...coupon}
 
     savedCoupon.discount = parseFloat(savedCoupon.discount)
@@ -77,9 +124,21 @@ const Admin = () => {
       return
     }
 
-    console.log("Saved coupon");
+    setErrorVisible(false);
 
     //send the coupon to the Server
+    let service = new DataService();
+    console.log('coupon...',coupon);
+    let res = await service.saveCoupon(savedCoupon);
+    console.log(res);
+
+    // add the savedCoupon to al lcoupons state var
+    let copy = [...allCoupons]
+    // copy.push(savedCoupon);
+    copy.push(res);
+    setAllCoupons(copy)
+
+    setLoading(false)
   }
 
 // -------------------------------------------
@@ -114,9 +173,22 @@ const Admin = () => {
             </div>
 
             <div className='my-control'>
-              <button onClick={handleSaveProduct}>Register Product</button>
+              <button className='btn-admin' onClick={handleSaveProduct}>Register Product</button>
             </div>
           </div>
+
+          {/* <hr /> */}
+
+          {loading ? <Loading/> :
+
+          <div className="coupon-list">
+            <ul>
+                {allProducts.map(product => (
+                  <li key={product._id} >{product.title} - ${product.price}</li>
+                ))}
+            </ul>
+          </div>
+          }
         </section>
         {/* -------------------------- */}
         <section className='sec-coupons'>
@@ -134,11 +206,24 @@ const Admin = () => {
               </div>
 
               <div className='my-control'>
-                <button onClick={handleSaveCoupon}>Register Coupon</button>
+                <button className='btn-admin' onClick={handleSaveCoupon}>Register Coupon</button>
               </div>
             </div>
 
+            {/* <hr /> */}
+
+            {loading ? <Loading/> :
+
+              <div className="coupon-list">
+                <ul>
+                    {allCoupons.map(coupon => (
+                      <li key={coupon._id} >{coupon.code} - {coupon.discount}</li>
+                    ))}
+                </ul>
+              </div>
+            }
         </section>
+
       </div>
 
     </div>
